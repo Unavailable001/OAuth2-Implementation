@@ -1,0 +1,21 @@
+<div class="login-container">
+
+  <h1>OAuth Learning Portal</h1>
+
+  <p>Learn OAuth 2.0 and OpenID Connect</p>
+
+  @if (authError) {
+    <p class="status-error">
+      Google sign-in failed. Check the backend OAuth configuration and try again.
+    </p>
+  }
+
+  <button
+    type="button"
+    (click)="login()">
+
+    Continue with Google
+
+  </button>
+
+</div>

@@ -12,6 +12,22 @@ ng serve
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
+## Google OAuth local setup
+
+This app uses a backend-mediated authorization-code flow. Configure a Google OAuth client of type **Web application**, then add this exact authorized redirect URI:
+
+```text
+http://localhost:8000/auth/callback
+```
+
+Add `GOOGLE_CLIENT_SECRET` and `GOOGLE_REDIRECT_URI=http://localhost:8000/auth/callback` to your existing `backend/.env`; keep the secret only in the backend `.env`, never in Angular code or source control. Use `backend/.env.example` as a reference if creating a new environment file. The frontend returns to `http://localhost:4200/dashboard` after the backend creates its session.
+
+Start the backend from the `backend` directory:
+
+```powershell
+.\.venv\Scripts\python.exe -m uvicorn main:app --reload --port 8000
+```
+
 ## Code scaffolding
 
 Angular CLI includes powerful code scaffolding tools. To generate a new component, run:

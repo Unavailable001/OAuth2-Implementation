@@ -1,0 +1,31 @@
+
+<div class="dashboard">
+
+  @if (authState.user(); as user) {
+
+    <h1>Welcome back, {{ user.name }}!</h1>
+
+    <p>You have successfully logged in.</p>
+
+    <div class="user-card">
+      <h3>User Information</h3>
+
+      <p><strong>Name:</strong> {{ user.name }}</p>
+
+      <p><strong>Email:</strong> {{ user.email }}</p>
+
+      <p>
+        <strong>Authentication:</strong>
+        {{ authState.isAuthenticated() ? 'Authenticated' : 'Not authenticated' }}
+      </p>
+    </div>
+
+    <button (click)="logout()">Logout</button>
+
+  } @else {
+
+    <h2>No authenticated user found.</h2>
+
+  }
+
+</div>
